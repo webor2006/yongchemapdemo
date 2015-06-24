@@ -1,0 +1,567 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yongche.yongchemapdemo.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/base_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="基础" />
+
+        <Button
+            android:id="@+id/marker_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="marker" />
+
+        <Button
+            android:id="@+id/line_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="轨迹" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="检索" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/base_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="设置URL" />
+
+                    <Button
+                        android:id="@+id/set_url_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set" />
+
+                    <EditText
+                        android:id="@+id/url_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="textUri"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="1.设置是否是国外" />
+
+                    <Button
+                        android:id="@+id/set_overseas_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set" />
+
+                    <TextView
+                        android:id="@+id/set_overseas_result_tv"
+                        style="@style/item_title_tv_style"
+                        android:text="国内" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.地图加载完毕" />
+
+                    <TextView
+                        android:id="@+id/on_map_loaded_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="3.地图点击" />
+
+                    <TextView
+                        android:id="@+id/on_map_click_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="4.设置与监听中心改变" />
+
+                    <Button
+                        android:id="@+id/set_center_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lat:" />
+
+                    <EditText
+                        android:id="@+id/on_center_lat_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lng:" />
+
+                    <EditText
+                        android:id="@+id/on_center_lng_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="5.设置与监听缩放改变" />
+
+                    <Button
+                        android:id="@+id/set_zoom_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set" />
+
+                    <TextView
+                        android:id="@+id/on_zoom_change_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+
+                    <EditText
+                        android:id="@+id/on_zoom_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="6.设置地图是否可以滑动" />
+
+                    <Button
+                        android:id="@+id/set_can_move_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set" />
+
+                    <TextView
+                        android:id="@+id/can_move_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/clear_map_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清空地图" />
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="7.根据latlng坐标转换为point平面坐标" />
+
+                    <Button
+                        android:id="@+id/to_point_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="转换" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="点击的坐标" />
+
+                    <TextView
+                        android:id="@+id/to_point_p_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="结果" />
+
+                    <TextView
+                        android:id="@+id/to_point_result_tv"
+                        style="@style/item_title_tv_style" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="8.根据point平面坐标转换为latlng坐标" />
+
+                    <Button
+                        android:id="@+id/to_latlng_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="转换" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="点击的point" />
+
+                    <TextView
+                        android:id="@+id/to_latlng_p_tv"
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="结果" />
+
+                    <TextView
+                        android:id="@+id/to_latlng_result_tv"
+                        style="@style/item_title_tv_style" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/marker_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.1添加marker" />
+
+                    <Button
+                        android:id="@+id/add_marker_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加marker" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.2添加marker list" />
+
+                    <Button
+                        android:id="@+id/add_marker_list_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加marker list" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.3删除一个marker" />
+
+                    <Button
+                        android:id="@+id/remove_marker_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="删除" />
+
+                    <EditText
+                        android:id="@+id/remove_marker_id"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.4修改marker坐标" />
+
+                    <Button
+                        android:id="@+id/change_marker_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="修改" />
+
+                    <EditText
+                        android:id="@+id/change_marker_lat"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:hint="lat"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+
+                    <EditText
+                        android:id="@+id/change_marker_lng"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:hint="lng"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+
+                    <EditText
+                        android:id="@+id/change_marker_id"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:hint="id"
+                        android:inputType="number"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="2.5marker点击监听" />
+
+                    <TextView
+                        android:id="@+id/marker_click_tv"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/clear_marker_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="清空marker" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/line_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="3.1添加轨迹" />
+
+                    <Button
+                        android:id="@+id/add_line_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="添加轨迹" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:text="3.2删除轨迹" />
+
+                    <Button
+                        android:id="@+id/remove_line_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="删除" />
+
+                    <EditText
+                        android:id="@+id/remove_line_id"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/clear_line_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="清空轨迹" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    style="@style/item_title_tv_style"
+                    android:text="4.1poi检索address" />
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lat:" />
+
+                    <EditText
+                        android:id="@+id/search_lat_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lng:" />
+
+                    <EditText
+                        android:id="@+id/search_lng_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/search_poi_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="search" />
+
+                <TextView
+                    android:id="@+id/search_result"
+                    style="@style/item_title_tv_style" />
+
+                <TextView
+                    style="@style/item_title_tv_style"
+                    android:text="4.2nearby检索" />
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lat:" />
+
+                    <EditText
+                        android:id="@+id/nearby_lat_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="lng:" />
+
+                    <EditText
+                        android:id="@+id/nearby_lng_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/item_ly_style" >
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="radius:" />
+
+                    <EditText
+                        android:id="@+id/nearby_radius_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:lines="1" />
+
+                    <TextView
+                        style="@style/item_title_tv_style"
+                        android:paddingLeft="10dp"
+                        android:text="key:" />
+
+                    <EditText
+                        android:id="@+id/nearby_key_et"
+                        style="@style/item_title_tv_style"
+                        android:layout_weight="1"
+                        android:lines="1" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/search_nearby_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="search" />
+
+                <TextView
+                    android:id="@+id/search_nearby_result"
+                    style="@style/item_title_tv_style" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <WebView
+        android:id="@+id/webView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+</LinearLayout>
